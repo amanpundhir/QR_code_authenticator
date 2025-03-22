@@ -10,7 +10,6 @@ This repository contains code and documentation for the QR Code Authentication p
 - [Installation](#installation)
 - [Usage](#usage)
 - [Experiments and Results](#experiments-and-results)
-- [Deployment](#deployment)
 - [Report](#report)
 - [License](#license)
 
@@ -19,7 +18,6 @@ QR codes are vulnerable to counterfeiting due to easy replication. This project 
 - **Traditional Approach**: Combines LBP/HOG features with a Random Forest classifier.
 - **Deep Learning Approach**: Uses a custom CNN and MobileNetV2 for feature extraction and classification.
 
-*(Insert workflow diagram here if available.)*
 
 ## Project Structure
 ```plaintext
@@ -30,24 +28,17 @@ QR_Code_Authentication_Project/
 ├── data/
 │   ├── first_print/First Print/     # Original QR codes
 │   └── second_print/Second Print/   # Counterfeit QR codes
-├── dataset_cnn/                     # Organized CNN dataset
-│   ├── train/original/              # Training originals
-│   ├── train/counterfeit/           # Training counterfeits
-│   ├── validation/original/         # Validation originals
-│   └── validation/counterfeit/      # Validation counterfeits
 ├── src/
 │   ├── data_preparation.py          # Dataset organization
-│   ├── feature_engineering.py       # LBP/HOG extraction
-│   ├── model_rf.py                  # Random Forest pipeline
-│   ├── model_cnn.py                 # Custom CNN
-│   ├── model_transfer.py            # MobileNetV2 transfer learning
-│   ├── evaluation.py                # Metrics and plots
-│   └── deploy.py                    # Model deployment
+│   ├── feature_engg.py              # LBP/HOG extraction
+│   ├── traditional_model.py         # Random Forest pipeline
+│   ├── cnn_model.py                 # Custom CNN
+│   ├── transfer learning_model.py   # MobileNetV2 transfer learning
+│   └── evaluation.py                # Metrics and plots
 ├── notebooks/                       # Experimental notebooks
 ├── models/                          # Saved models
-│   ├── qr_authentication_transfer_model.keras
-│   ├── qr_authentication_transfer_model.tflite
-│   └── rf_qr_authentication_model.joblib
+│   ├── transfer_learning.tflite
+│   └── traditional_model.joblib
 └── report/                          # Final report
     └── QR_Code_Authentication_Report.pdf
 ```
@@ -55,8 +46,8 @@ QR_Code_Authentication_Project/
 ## Installation
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/QR_Code_Authentication_Project.git
-   cd QR_Code_Authentication_Project
+   git clone https://github.com/amanpundhir/QR_code_authenticator.git
+   cd QR_code_authenticator
    ```
 
 2. **Install dependencies** (Python 3.7+ required):
@@ -76,15 +67,15 @@ QR_Code_Authentication_Project/
 ### Training Models
 - **Traditional CV Pipeline**:
   ```bash
-  python src/model_rf.py
+  python src/traditional_model.py
   ```
 - **Custom CNN**:
   ```bash
-  python src/model_cnn.py
+  python src/cnn_model.py
   ```
 - **MobileNetV2 Transfer Learning**:
   ```bash
-  python src/model_transfer.py
+  python src/transfer learning_model.py
   ```
 
 ### Evaluation
@@ -93,21 +84,16 @@ Generate performance metrics and plots:
 python src/evaluation.py
 ```
 
-### Deployment
-Convert/save models for inference:
-```bash
-python src/deploy.py
-```
 
 ## Experiments and Results
 - **Random Forest**: 100% accuracy on small test set (requires larger validation).
 - **Custom CNN**: Overfitting observed during training.
 - **MobileNetV2**: 95% validation accuracy with balanced precision/recall.
 
-*(See `report/QR_Code_Authentication_Report.pdf` for details.)*
+
 
 ## Report
-A full report with methodology, results (training curves, confusion matrices), and deployment guidelines is available in [`report/QR_Code_Authentication_Report.pdf`](report/QR_Code_Authentication_Report.pdf).
+A full report with methodology, results (training curves, confusion matrices), and deployment guidelines is available in [`Documentation.pdf`](Documentation.pdf).
 
 ## License
 MIT License. See [LICENSE](LICENSE).
