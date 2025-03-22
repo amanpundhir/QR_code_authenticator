@@ -11,7 +11,6 @@ This repository contains code and documentation for the QR Code Authentication p
 - [Usage](#usage)
 - [Experiments and Results](#experiments-and-results)
 - [Report](#report)
-- [License](#license)
 
 ## Overview
 QR codes are vulnerable to counterfeiting due to easy replication. This project compares original prints with counterfeit versions using:
@@ -95,5 +94,3 @@ python src/evaluation.py
 ## Report
 A full report with methodology, results (training curves, confusion matrices), and deployment guidelines is available in [`Documentation.pdf`](Documentation.pdf).
 
-## License
-MIT License. See [LICENSE](LICENSE).
